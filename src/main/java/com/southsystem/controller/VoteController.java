@@ -1,6 +1,7 @@
 package com.southsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +20,6 @@ public class VoteController {
 
 	@PostMapping
 	public ResponseEntity<VoteDTO> voteSchedule(@RequestBody VoteDTO voteDTO) {
-		return ResponseEntity.ok(scheduleService.voteSchedule(voteDTO));
+		return new ResponseEntity<>(scheduleService.voteSchedule(voteDTO),HttpStatus.CREATED);
 	}
 }

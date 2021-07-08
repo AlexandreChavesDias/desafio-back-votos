@@ -1,6 +1,7 @@
 package com.southsystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,12 +22,12 @@ public class ScheduleController {
 
 	@PostMapping
 	public ResponseEntity<ScheduleDTO> criateSchedule(@RequestBody ScheduleDTO scheduleDTO) {
-		return ResponseEntity.ok(scheduleService.criateSchedule(scheduleDTO));
+		return new ResponseEntity<>(scheduleService.criateSchedule(scheduleDTO),HttpStatus.CREATED);
 	}
 
-	@GetMapping("/{id}") // FUNCIONOU
+	@GetMapping("/{id}")
 	public ResponseEntity<String> scheduleResult(@PathVariable Long id) {
-		return ResponseEntity.ok(scheduleService.scheduleResult(id));
+		return new ResponseEntity<>(scheduleService.scheduleResult(id), HttpStatus.OK);
 	}
 
 }
