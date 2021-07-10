@@ -11,6 +11,6 @@ public class AssociateDTO {
 	private String cpf;
 
 	public AssociateDTO(String cpf) {
-		this.cpf = cpf;
+		this.cpf =cpf;
 	}
 }
