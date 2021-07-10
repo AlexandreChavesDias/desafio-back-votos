@@ -2,6 +2,8 @@ package com.southsystem.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +24,7 @@ public class AssociateController {
 	private AssociateService associateService;
 
 	@PostMapping
-	public ResponseEntity<AssociateDTO> createAssociate(@RequestBody AssociateDTO associateDTO) {
+	public ResponseEntity<AssociateDTO> createAssociate(@RequestBody @Valid AssociateDTO associateDTO) {
 		return new ResponseEntity<>(associateService.createAssociate(associateDTO), HttpStatus.CREATED);
 	}
 
