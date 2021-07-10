@@ -1,5 +1,8 @@
 # desafio-back-votos
 Desafio Backend South System
+##
+## URL base para testes 
+## https://desafio-back-south.herokuapp.com/api/v1/
 ## 
 ## Arquitetura
 Foi utilizada uma arquitetura em camadas para separar as responsabilidades, sendo as mesmas:
