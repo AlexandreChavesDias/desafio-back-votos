@@ -1,6 +1,10 @@
 # desafio-back-votos
 Desafio Backend South System
-## 
+##
+## URL base para testes 
+## https://desafio-back-south.herokuapp.com/api/v1/
+## Documentação dos endpoints
+## https://desafio-back-south.herokuapp.com/swagger-ui.html#/
 ## Arquitetura
 Foi utilizada uma arquitetura em camadas para separar as responsabilidades, sendo as mesmas:
 - SERVICE: Compreendendo a lógica de negócio.
