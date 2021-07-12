@@ -13,14 +13,10 @@ import com.southsystem.service.AssociateService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class DesafioBackVotosApplicationTests {
+class AssociateControllerTest {
 	
 	@Autowired
 	private AssociateService associateService;
-
-	@Test
-	void contextLoads() {
-	}
 	
 	@Test
 	public void deveSalvarAssociate_QuandoCPFCorreto(){

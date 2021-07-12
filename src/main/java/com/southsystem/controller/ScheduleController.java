@@ -1,5 +1,7 @@
 package com.southsystem.controller;
 
+import java.net.URISyntaxException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,8 +23,9 @@ public class ScheduleController {
 	private ScheduleService scheduleService;
 
 	@PostMapping
-	public ResponseEntity<ScheduleDTO> criateSchedule(@RequestBody ScheduleDTO scheduleDTO) {
-		return new ResponseEntity<>(scheduleService.criateSchedule(scheduleDTO),HttpStatus.CREATED);
+	public ResponseEntity<ScheduleDTO> criateSchedule(@RequestBody ScheduleDTO scheduleDTO)
+			throws  URISyntaxException {
+		return new ResponseEntity<>(scheduleService.criateSchedule(scheduleDTO), HttpStatus.CREATED);
 	}
 
 	@GetMapping("/{id}")

@@ -18,28 +18,35 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class VoteSessionService {
-    @Autowired
-    private  ModelMapper modelMapper;
-    private final VoteSessionRepository voteSessionRepository;
-    private final ScheduleService ScheduleService;
 
-    public VoteSessionDTO createVotingSession(VoteSessionDTO voteSessionDTO) {
-        if (Objects.isNull(voteSessionDTO.getStartTime())) {
-        	voteSessionDTO.setStartTime(LocalDateTime.now());
-        }
+	@Autowired
+	private ModelMapper modelMapper;
 
-        if (Objects.isNull(voteSessionDTO.getDuration())) voteSessionDTO.setDuration(1);;
+	@Autowired
+	private final VoteSessionRepository voteSessionRepository;
 
-        ScheduleDTO scheduleDTO = ScheduleService.findById(voteSessionDTO.getSchedule().getId());
+	@Autowired
+	private final ScheduleService ScheduleService;
 
-        if (Objects.nonNull(scheduleDTO.getVoteSession())) {
-            throw new ScheduleException("Schedule already passed session");
-        }
-        
-        voteSessionDTO.setEndTime(voteSessionDTO.getStartTime().plusMinutes(voteSessionDTO.getDuration()));
-        voteSessionDTO.setSchedule(scheduleDTO);
-        voteSessionRepository.save(modelMapper.map(voteSessionDTO, VoteSession.class));
+	public VoteSessionDTO createVotingSession(VoteSessionDTO voteSessionDTO) {
+		if (Objects.isNull(voteSessionDTO.getStartTime())) {
+			voteSessionDTO.setStartTime(LocalDateTime.now());
+		}
 
-        return modelMapper.map(voteSessionDTO, VoteSessionDTO.class);
-    }
+		if (Objects.isNull(voteSessionDTO.getDuration()))
+			voteSessionDTO.setDuration(1);
+		;
+
+		ScheduleDTO scheduleDTO = ScheduleService.findById(voteSessionDTO.getSchedule().getId());
+
+		if (Objects.nonNull(scheduleDTO.getVoteSession())) {
+			throw new ScheduleException("Schedule already passed session");
+		}
+
+		voteSessionDTO.setEndTime(voteSessionDTO.getStartTime().plusMinutes(voteSessionDTO.getDuration()));
+		voteSessionDTO.setSchedule(scheduleDTO);
+		voteSessionRepository.save(modelMapper.map(voteSessionDTO, VoteSession.class));
+
+		return modelMapper.map(voteSessionDTO, VoteSessionDTO.class);
+	}
 }
