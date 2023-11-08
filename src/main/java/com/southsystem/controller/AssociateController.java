@@ -19,7 +19,7 @@ import com.southsystem.exceptions.NotFoundException;
 import com.southsystem.service.AssociateService;
 
 @RestController
-@RequestMapping("api/v1/associates")
+@RequestMapping("api/v1/associate")
 public class AssociateController {
 
 	@Autowired
